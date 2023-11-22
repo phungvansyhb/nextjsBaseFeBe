@@ -1,20 +1,34 @@
-import type { Config } from 'tailwindcss'
-
-const config: Config = {
-  content: [
-    './pages/**/*.{js,ts,jsx,tsx,mdx}',
-    './components/**/*.{js,ts,jsx,tsx,mdx}',
-    './app/**/*.{js,ts,jsx,tsx,mdx}',
-  ],
+/** @type {import('tailwindcss').Config} */
+module.exports = {
+  content: ['./pages/**/*.{js,ts,jsx,tsx,mdx}', './shared/components/**/*.{js,ts,jsx,tsx,mdx}'],
   theme: {
     extend: {
-      backgroundImage: {
-        'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
-        'gradient-conic':
-          'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
+      colors: {
+        primary: '#006884',
+        lightPrimary: "#E0F1F8",
+        secondary: '#DBA40E',
+        lightSecondary: "#FBE89A",
+        danger: "#DB221F",
+        lightDanger: "#FFE6D4",
       },
+      transitionProperty: {
+        'height': 'height',
+      },
+
+      keyframes: {
+        'change-step-color': {
+          '0%': { backgroundColor: '#ffffff', borderColor: '#a0a4ac', color: '#a0a4ac' },
+          '100%': { backgroundColor: '#f5f5f5', borderColor: '#040404', color: '#040404' }
+        }
+      },
+      animation: {
+        'change-step-color': 'change-step-color 0.8s linear',
+      }
     },
   },
   plugins: [],
-}
-export default config
+  important: true,
+  corePlugins: {
+    preflight: false,
+  },
+};

@@ -116,3 +116,4 @@ export default function Home() {
     </main>
   )
 }
+Home.getLayout = (children: React.ReactNode) => <>{children}</>
